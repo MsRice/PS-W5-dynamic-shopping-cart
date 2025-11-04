@@ -15,14 +15,20 @@
     justify-content: center;
     flex-direction: column;
 }
-#new-item{
+#new-item , #new-item-price{
     border: 2px solid chartreuse;
     border-radius: 5px;
     font-size: 2rem;
     
 }
+#new-item-price{
+    width: 10%;
+}
 #add-item-form{
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .add-item-to-list--btn{
     border-radius: 5px;
@@ -78,7 +84,7 @@
     margin-top: 10px;
 }
 
-.edit-wrapper{
-    border: 2px solid rgb(175, 1, 161);
-
+.cart-item{
+    border: 2px solid chartreuse;
+    display: flex;
 }

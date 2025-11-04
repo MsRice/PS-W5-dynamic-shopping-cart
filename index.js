@@ -50,12 +50,11 @@ shopping_list.addEventListener('click' , function(event){
         newProduct_inCart.dataset.quantity = product.quantity
         newProduct_inCart.dataset.currprice = (product.price * product.quantity).toFixed(2)
         newProduct_inCart.classList.add('list-item')
-        // newProduct_inCart.classList.add('cart-item')
         
    
         
         newProduct_inCart.innerHTML = `<div> ${product.value} </div> \
-        <div> \
+        <div class="list-item cart-item"> \
         count: ${product.quantity} \
         <div id="edit-${newProduct_inCart.dataset.id}-qty--wrapper" class="edit-wrapper">
         <button type="submit" class="edit-wrapper">
@@ -89,7 +88,7 @@ shopping_cart.addEventListener('click', function(event){
         const pricePH = document.createElement('div');
         
         cart_total_sum -= curr_product.dataset.currprice
-        
+        curr_product.dataset.currprice -= curr_product.dataset.currprice
         
         cart_total.innerHTML = `$ ${cart_total_sum.toFixed(2)}`
         newContent.innerHTML = `<div class="quantity--wrapper"> \
@@ -108,6 +107,9 @@ shopping_cart.addEventListener('click', function(event){
     }
     if(event.target.classList.contains('update-cart')){
         const curr_product = event.target.closest('li');
+        
+        console.log(curr_product.dataset)
+        curr_product.dataset.currprice += (curr_product.dataset.quantity * curr_product.dataset.price).toFixed(2)
         if(curr_product.dataset.quantity == 0){
             curr_product.remove()
         }else if(curr_product.dataset.quantity > 0){
@@ -116,7 +118,6 @@ shopping_cart.addEventListener('click', function(event){
         const copy_product = curr_product.cloneNode(true)
         copy_product.dataset.quantity = curr_product.dataset.quantity
         
-        console.log(copy_product)
         cart_total_sum += copy_product.dataset.price * copy_product.dataset.quantity
         cart_total.innerHTML = `$ ${cart_total_sum.toFixed(2)}`
 
